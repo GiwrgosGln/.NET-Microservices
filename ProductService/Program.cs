@@ -9,7 +9,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddDbContext<ProductContext>(options =>
-    options.UseInMemoryDatabase(databaseName: "TestDb"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
     
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
